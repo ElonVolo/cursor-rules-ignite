@@ -1,0 +1,214 @@
+{
+  "name": "Ignite React Native with Expo",
+  "description": "Rules for React Native projects using the Ignite framework with Expo best practices",
+  "rules": [
+    {
+      "name": "File Organization",
+      "description": "Follow Ignite's file organization patterns",
+      "rules": [
+        "Place screens in the app/screens directory with a corresponding Screen suffix",
+        "Place components in the app/components directory",
+        "Place navigation setup in app/navigators",
+        "Place services in app/services",
+        "Place models in app/models",
+        "Place theme configuration in app/theme",
+        "Place utility functions in app/utils",
+        "Place i18n files in app/i18n",
+        "Place hooks in app/hooks",
+        "Structure component files: exported component, subcomponents, helpers, static content, types",
+        "Use lowercase with dashes for subdirectories within feature areas (e.g., components/auth-wizard)"
+      ]
+    },
+    {
+      "name": "Component Structure",
+      "description": "Component file organization according to Ignite patterns",
+      "rules": [
+        "Use named exports for components (preferred) or default exports (when following strict Ignite patterns)",
+        "Create a separate index.ts barrel file to re-export components",
+        "Use functional components with explicit TypeScript interfaces",
+        "Place component styles within the same file using the $-prefixed style constants",
+        "Use the useStyles hook from app/hooks for theme-aware styling"
+      ]
+    },
+    {
+      "name": "Naming Conventions",
+      "description": "Follow Ignite naming conventions",
+      "rules": [
+        "Use PascalCase for component names (e.g., Button.tsx)",
+        "Use camelCase for utility files (e.g., useFormValidation.ts)",
+        "Use kebab-case for asset file names and subdirectories",
+        "Suffix screen components with 'Screen' (e.g., HomeScreen.tsx)",
+        "Suffix navigator components with 'Navigator' (e.g., AppNavigator.tsx)",
+        "Prefix hook files with 'use' (e.g., useTheme.ts)",
+        "Prefix style constants with $ (e.g., $container, $text)",
+        "Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError)"
+      ]
+    },
+    {
+      "name": "Code Style",
+      "description": "Follow Ignite and Expo code style",
+      "rules": [
+        "Use TypeScript for all files with strict mode enabled",
+        "Use interfaces for props definitions named ComponentNameProps",
+        "Use destructuring for props",
+        "Use the Ignite styling system and avoid inline styles",
+        "Use constants for string literals",
+        "Enforce trailing commas in multi-line objects and arrays",
+        "Use 2-space indentation",
+        "Never use inline style objects in JSX - use $-prefixed style constants instead",
+        "Place style variables at the bottom of the file",
+        "Use functional and declarative programming patterns; avoid classes",
+        "Prefer iteration and modularization over code duplication",
+        "Use the 'function' keyword for pure functions",
+        "Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements",
+        "Use Prettier for consistent code formatting",
+        "Avoid enums; use maps instead"
+      ]
+    },
+    {
+      "name": "State Management",
+      "description": "Follow state management best practices",
+      "rules": [
+        "Use MobX-State-Tree (MST) for app-level state management when following Ignite",
+        "Consider React Context with useReducer for simpler global state management",
+        "Use hooks like useStores() to access store state",
+        "Keep local component state with useState (for simple state) or useReducer (for complex state)",
+        "Always destructure state and actions from stores",
+        "For complex state management beyond MST, consider Zustand or Redux Toolkit",
+        "Leverage react-query for data fetching and caching to avoid excessive API calls",
+        "Minimize use of useState and useEffect where more appropriate state patterns exist"
+      ]
+    },
+    {
+      "name": "Navigation",
+      "description": "Follow navigation best practices",
+      "rules": [
+        "Use React Navigation for routing",
+        "Define navigation types in app/navigators/AppNavigator.tsx",
+        "Use navigate() instead of direct navigation props where possible",
+        "Use goBack() for back navigation",
+        "Define screen params interface for each navigator",
+        "Leverage deep linking and universal links for better user engagement",
+        "Consider using dynamic routes with expo-router for better navigation handling"
+      ]
+    },
+    {
+      "name": "Theme and Styling",
+      "description": "Follow Ignite theme patterns with Expo considerations",
+      "rules": [
+        "Use the theme's color palette defined in app/theme/palette.ts",
+        "Use spacing presets from app/theme/spacing.ts",
+        "Import Text component from app/components for all text rendering",
+        "Use preset text styles from app/components/Text.tsx",
+        "Use the useTheme hook to access theme properties",
+        "Type style variables with ViewStyle, TextStyle, or ImageStyle imported from '@/theme'",
+        "Import { $styles } from '@/theme' for base styles",
+        "Use array composition when extending styles (e.g., [$baseStyle, { additionalProperty: value }])",
+        "Declare styles in the format: const $styleName: ViewStyle = { property: value }",
+        "Implement responsive design with Flexbox and Expo's useWindowDimensions for screen size adjustments",
+        "Consider styled-components or Tailwind CSS for more complex component styling needs",
+        "Implement dark mode support using Expo's useColorScheme",
+        "Ensure high accessibility (a11y) standards using ARIA roles and native accessibility props"
+      ]
+    },
+    {
+      "name": "Safe Area Management",
+      "description": "Properly handle device safe areas",
+      "rules": [
+        "Use SafeAreaProvider from react-native-safe-area-context to manage safe areas globally",
+        "Wrap top-level components with SafeAreaView to handle notches, status bars, and other screen insets",
+        "Use SafeAreaScrollView for scrollable content to ensure it respects safe area boundaries",
+        "Avoid hardcoding padding or margins for safe areas; rely on SafeAreaView and context hooks"
+      ]
+    },
+    {
+      "name": "Performance Optimization",
+      "description": "Optimize app performance",
+      "rules": [
+        "Use Expo's AppLoading and SplashScreen for optimized app startup experience",
+        "Optimize images: use WebP format where supported, include size data, implement lazy loading with expo-image",
+        "Implement code splitting and lazy loading for non-critical components",
+        "Profile and monitor performance using React Native's built-in tools and Expo's debugging features",
+        "Avoid unnecessary re-renders by memoizing components and using useMemo and useCallback hooks appropriately",
+        "Leverage react-native-reanimated and react-native-gesture-handler for performant animations and gestures"
+      ]
+    },
+    {
+      "name": "Internationalization",
+      "description": "Follow i18n best practices",
+      "rules": [
+        "Use i18n-js or expo-localization for internationalization",
+        "Use the translate function (or t function) for all user-facing strings",
+        "Define translations in app/i18n/translations directory",
+        "Avoid hardcoded strings in components",
+        "Support multiple languages and RTL layouts",
+        "Ensure text scaling and font adjustments for accessibility"
+      ]
+    },
+    {
+      "name": "Error Handling",
+      "description": "Follow error handling best practices",
+      "rules": [
+        "Use try/catch blocks for async operations",
+        "Use the ErrorBoundary component for component-level errors",
+        "Log errors through the proper logger service",
+        "Display user-friendly error messages",
+        "Consider Zod for runtime validation and error handling",
+        "Implement proper error logging using Sentry or a similar service",
+        "Handle errors at the beginning of functions",
+        "Use early returns for error conditions to avoid deeply nested if statements",
+        "Avoid unnecessary else statements; use if-return pattern instead",
+        "Consider expo-error-reporter for logging and reporting errors in production"
+      ]
+    },
+    {
+      "name": "Testing",
+      "description": "Follow testing best practices",
+      "rules": [
+        "Write tests in __tests__ directories adjacent to the files they test",
+        "Use Jest and React Native Testing Library for unit tests",
+        "Mock services and APIs in tests",
+        "Test component rendering and interactions",
+        "Name test files with .test.ts or .test.tsx extensions",
+        "Consider snapshot testing for components to ensure UI consistency",
+        "Implement integration tests for critical user flows using Detox",
+        "Use Expo's testing tools for running tests in different environments"
+      ]
+    },
+    {
+      "name": "API and Services",
+      "description": "Follow API best practices",
+      "rules": [
+        "Use Apisauce for API requests when following strict Ignite patterns",
+        "Consider react-query for data fetching and caching",
+        "Define API methods in app/services/api directory",
+        "Create separate API problem files for handling API errors",
+        "Use environment-specific API configuration",
+        "Ensure secure communication with APIs using HTTPS and proper authentication"
+      ]
+    },
+    {
+      "name": "Security",
+      "description": "Follow security best practices",
+      "rules": [
+        "Sanitize user inputs to prevent XSS attacks",
+        "Use react-native-encrypted-storage for secure storage of sensitive data",
+        "Ensure secure communication with APIs using HTTPS and proper authentication",
+        "Follow Expo's Security guidelines to protect your app",
+        "Use expo-permissions to handle device permissions gracefully"
+      ]
+    },
+    {
+      "name": "Expo Integration",
+      "description": "Leverage Expo capabilities",
+      "rules": [
+        "Rely on Expo's managed workflow for streamlined development and deployment",
+        "Use Expo's built-in components for common UI patterns and layouts",
+        "Use expo-constants for managing environment variables and configuration",
+        "Implement expo-updates for over-the-air (OTA) updates",
+        "Follow Expo's best practices for app deployment and publishing",
+        "Ensure compatibility with iOS and Android by testing extensively on both platforms"
+      ]
+    }
+  ]
+}
